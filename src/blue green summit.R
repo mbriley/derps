@@ -9,11 +9,9 @@ df$yend <- df$y*1.5
 
 df2 <- data.frame(x = df$y, y = df$x, xend = df$yend, yend = df$xend)
 
-ggplot(df) + 
+derp <- ggplot(df) + 
   geom_segment(aes(x = x, y = y, xend = xend, yend = yend), col = 'blue') +
   geom_segment(data = df, aes(x = x, y = yend, xend = xend, yend = y), col = 'green') +
  theme_void()
 
-#   geom_segment(data = df2, aes(x = x, y = y, xend = xend, yend = yend), col = 'blue') +
-#   geom_segment(data = df2, aes(x = x, y = yend, xend = xend, yend = y), col = 'green') +
-#   theme_void()
+ggsave(paste0('output/',  as.character(Sys.time()), '.png'), derp, width = 8, height = 8)
